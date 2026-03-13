@@ -67,6 +67,8 @@ function M.start(filepath, port)
 	end
 
 	M.serverObj:start(config.config.address, port, {
+		max_retries = 10,
+		try_next_port = true,
 		on_events = utils.supported_filetype(filepath) == "html"
 				and {
 					---@param client uv_tcp_t
